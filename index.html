@@ -83,48 +83,75 @@
     </style>
 </head>
 <body>
-    <form id="form">
-        <input type="text" placeholder="имя" id="user_name">
-        <input type="text" placeholder="email" id="user_email">
-        <input type="text" placeholder="телефон" id="user_phone">
-        <button id="order">Оформить</button>
-        <div id="error"></div>
-    </form>
+    <div id = "main">
+        <input type="text" placeholder="имя" id="firstName">
+        <input type="text" placeholder="email" id="lastName">
+        <input type="text" placeholder="телефон" id="idGender">
+        <input type="text" placeholder="телефон" id="birthday">
+        <input type="text" placeholder="телефон" id="email">
+        <input type="text" placeholder="телефон" id="idWorkLanguage">
+        <input type="text" placeholder="телефон" id="experience">
+        <input type="text" placeholder="телефон" id="itemUnique">
+        <input type="text" placeholder="телефон" id="finishWorkingHours">
+        <input type="text" placeholder="телефон" id="description">
+        <button id = "order">Отправить</button>
+    </div>
     
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     
     <script>
         let tg = window.Telegram.WebApp;
+        let buy = document.getElementById("buy");
         let order = document.getElementById("order");
 
         tg.expand();
-
+ 
+        // buy.addEventListener("click", () => {
+        //     document.getElementById("main").style.display = "none";
+        //     document.getElementById("form").style.display = "block";
+        //     document.getElementById("user_name").value = tg.initDataUnsafe.user.first_name + " " + tg.initDataUnsafe.last_name ;
+        // });
         order.addEventListener("click", () => {
             document.getElementById("order").innerText = '';
-            let name = document.getElementById("user_name").value;
-            let email = document.getElementById("user_email").value;
-            let phone = document.getElementById("user_phone").value;
+            let firstName = document.getElementById("firstName").value;
+            let lastName = document.getElementById("lastName").value;
+            let idGender = document.getElementById("idGender").value;
+            let birthday = document.getElementById("birthday").value;
+            let email = document.getElementById("email").value;
+            let idGeidWorkLanguagender = document.getElementById("idWorkLanguage").value;
+            let experience = document.getElementById("experience").value;
+            let itemUnique = document.getElementById("itemUnique").value;
+            let finishWorkingHours = document.getElementById("finishWorkingHours").value;
+            let description = document.getElementById("description").value;
+            
 
-            if(name.length < 3 || name == null ){
-                document.getElementById("error").innerText = "Ошибка name";
-                return;
-            }
+            // if(name.length < 3 || name == null ){
+            //     document.getElementById("error").innerText = "Ошибка name";
+            //     return;
+            // }
 
-            if(email.length < 3 || email== null){
-                document.getElementById("error").innerText = "Ошибка email";
-                return;
-            }
+            // if(email.length < 3 || email== null){
+            //     document.getElementById("error").innerText = "Ошибка email";
+            //     return;
+            // }
 
-            if(phone.length < 9 || phone== null){
-                document.getElementById("error").innerText = "Ошибка номера телефона";
-                return;
-            }
+            // if(phone.length < 9 || phone== null){
+            //     document.getElementById("error").innerText = "Ошибка номера телефона";
+            //     return;
+            // }
 
             let data = {
                 action: "transaction",
-                name: name,
+                firstName: firstName,
+                lastName: lastName,
+                idGender: idGender,
+                birthday: birthday,
                 email: email,
-                phone: phone
+                idGeidWorkLanguagender: idGeidWorkLanguagender,
+                experience: experience,
+                itemUnique: itemUnique,
+                finishWorkingHours: finishWorkingHours,
+                description: description
             }
 
             tg.sendData(JSON.stringify(data));
